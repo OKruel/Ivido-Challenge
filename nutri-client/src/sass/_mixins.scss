@@ -1,0 +1,27 @@
+
+@mixin FlexCenterLayout() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+@mixin textUpperCase() {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+};
+
+@mixin centering($topValue) {
+    position: absolute;
+    top: $topValue;
+    left: 50%;
+    transform: translate(-50%, -50%);
+};
+
+@mixin spaceAvailable {
+    height: 100%;
+    width: 100%;
+}
+
+
+

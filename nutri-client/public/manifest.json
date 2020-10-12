@@ -1,0 +1,14 @@
+{
+  "name": "Olavo Kruel Portfolio",
+  "short_name": "Ivido Challenge",
+  "icons": [],
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff",
+  "theme_color": "#3F51B5",
+  "dir": "ltr",
+  "lang": "en-US",
+  "description" : "Olavo Kruel Portfolio"
+}

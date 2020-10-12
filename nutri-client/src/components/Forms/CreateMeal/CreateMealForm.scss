@@ -1,0 +1,127 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+@mixin dropLabel {
+    position: relative;
+
+    &__label {
+        font-size: 1.2rem;
+        color: gray;
+        position: absolute;
+        margin: auto;
+        top: 67%;
+        z-index: -1;
+        transition: all 0.5s ease-in-out;
+    }
+
+    &__input:placeholder-shown + &__label {
+        top: 25%;
+    }
+
+    &__input {
+        position: absolute;
+        width: 100%;
+        margin: auto;
+        top: 33%;
+        border: none;
+        border-bottom: 1px solid black;
+        transition: all 1s ease-in-out;
+
+        &::placeholder {
+            font-size: 1.2rem;
+            color: gray;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.mealForm {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 7% 1fr 13%;
+    padding: 2% 2%;
+
+    &__title {
+        grid-row: 1 / span 1;
+        font-size: 3.4rem;
+        text-align: center;
+    }
+    &__content {
+        grid-row: 2 / span 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__form-group {
+        background-color: purple;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 2%;
+
+        &__input {
+            width: 100%;
+            position: relative;
+            border-style: none;
+            border-bottom: 1px solid black;
+            font-size: 1.8rem;
+            transition: all 1s ease-in-out;
+
+            &::placeholder {
+                font-size: 1.8rem;
+                color: gray;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+        
+        &__input:placeholder-shown + &__label {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+            transition: all 1s ease-in-out;
+        }
+
+        &__label {
+            position: relative;
+            right: 100%;
+            top: 200%;
+            opacity: 1;
+            transition: all 1s ease-in-out;
+            font-size: 1.8rem;
+        }
+        
+    }
+
+    &__buttonsContainer {
+        grid-row: 3 / span 1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &__button {
+            height: 50%;
+            width: 35%;
+            color: #e83c38;
+            background-color: #a6d1c9;
+            box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem;
+            border: none;
+            padding: 0.2rem;
+            transition: all 0.2s ease-in-out;
+            border-radius: 10%;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
