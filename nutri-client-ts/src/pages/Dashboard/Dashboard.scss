@@ -1,0 +1,20 @@
+.dashboard {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 44px 56px 1fr;
+    
+    &__nav {
+        background-color: blueviolet;
+        grid-row: 1 / span 1;
+    }
+    
+    &__main {
+        background-color: red;
+        grid-row: 3 / span 1;
+
+        display: grid;
+        grid-template-columns: 1fr 32px 1fr 32px 1fr;
+    }
+}
