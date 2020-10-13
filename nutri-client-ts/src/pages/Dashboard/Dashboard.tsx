@@ -4,10 +4,12 @@ import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
 import Main from '../../components/Titles/Main/Main';
 import AddFood from '../../components/buttons/AddFood/AddFood';
+import Backdrop from '../../components/Backdrop/Backdrop';
 
 const Dashboard = () => {
     return (
         <div className='dashboard'>
+            <Backdrop/>
             <nav className='dashboard__nav'>
                 <div className='dashboard__nav__title'>
                     <Main />

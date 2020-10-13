@@ -1,0 +1,25 @@
+.input-text {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        height: 23px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+    &__input {
+        height: 44px;
+        width: 100%;
+        background-color: #E8E8E8;
+        padding: 16px 11px;
+        
+        &::placeholder {
+            font-size: 16px;
+
+        }
+    }
+}

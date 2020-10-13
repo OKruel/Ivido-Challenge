@@ -1,0 +1,55 @@
+.add-food-form {
+    height: 365px;
+    width: 608px;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 8px;
+
+    display: grid;
+    grid-template-rows: 27px 32px 67px 32px 67px 32px 44px;
+    grid-template-columns: 352px 32px 160px;
+
+    &__title {
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 3;
+        // background-color: purple;
+        height: 100%;
+        width: 100%;
+        font-size: 20px;
+        
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    &__input1 {
+        grid-row: 3 / span 1;
+        grid-column: 1 / span 3;
+        height: 100%;
+        width: 100%;
+        // background-color: salmon;
+    }
+    
+    &__input2 {
+        grid-row: 5 / span 1;
+        grid-column: 1 / span 1;
+        // background-color: yellowgreen;
+        height: 100%;
+        width: 100%;
+    }
+    
+    &__input3 {
+        grid-row: 5 / span 1;
+        grid-column: 3 / span 1;
+        // background-color: yellowgreen;
+        height: 100%;
+        width: 100%;
+    }
+    
+    &__buttons {
+        grid-row: 7 / span 1;
+        grid-column: 1 / span 3;
+        background-color: burlywood;
+        height: 100%;
+        width: 100%;
+    }
+}
