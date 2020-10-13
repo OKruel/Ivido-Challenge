@@ -1,12 +1,17 @@
 import React from 'react';
 import './Card.scss';
-import CloseButton from '../buttons/closeButton';
+import CloseButton from '../buttons/closeButton/closeButton';
 
 const Card = () => {
     return (
         <div className='card'>
-            Card
-            <CloseButton />
+            <div className='card__info'>
+                <div className='card__info__meal'>Name of the Meal</div>
+                <div className='card__info__amount'>Amount</div>
+            </div>
+            <div className='card__button'>
+                <CloseButton />
+            </div>
         </div>
     );
 };

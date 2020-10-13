@@ -1,7 +1,55 @@
 .card {
-    background-color: cadetblue;
+    background-color: #FFFFFF;
     height: 64px;
     width: 100%;
+    border-radius: 4px;
     padding-left: 16px;
     padding-right: 8px;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    margin: 16px 0px;
+
+
+    &__info {
+        height: 100%;
+        width: 100%;
+        // background-color: gray;
+        grid-column: 1 / span 1;
+
+        display: grid;
+        grid-template-rows: 50% 50%;
+
+        &__meal {
+            grid-row: 1 / span 1;
+            height: 100%;
+            width: 100%;
+            // background-color: greenyellow;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        &__amount {
+            grid-row: 2 / span 1;
+            height: 100%;
+            width: 100%;
+            // background-color: pink;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+
+    &__button {
+        grid-column: 2 / span 1;
+        // background-color: blue;
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
