@@ -1,6 +1,6 @@
 import { ActionTypes, Action } from '../actions/actionTypes';
 
-enum FoodCategories {
+export enum FoodCategories {
     Carbohydrate = 'Carbohydrate',
     Protein = 'Protein',
     Fat = 'Fat',
@@ -43,6 +43,12 @@ export const foodReducer = (state: FoodReducerState = initialState, action: Acti
                 ...state,
                 editFood: action.payload
             }
+
+        case ActionTypes.CLEAR_UPDATED_FOOD:
+            return {
+                ...state,
+                editFood: action.payload
+        }
 
         default:
             return state;;

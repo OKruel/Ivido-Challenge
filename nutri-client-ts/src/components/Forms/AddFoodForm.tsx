@@ -16,7 +16,7 @@ const AddFoodForm = () => {
     // const food = useSelector((state: RootState) => state.foodReducer.foods)
 
     const [name, setName] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState('carbohydrate');
     const [calories, setCalories] = useState('');
 
     // useEffect(() => {
@@ -33,7 +33,7 @@ const AddFoodForm = () => {
 
     const onCancel = () => {
         setName('');
-        setType('');
+        setType('carbohydrate');
         setCalories('');
         dispatch(backdropHide())
     }
@@ -50,8 +50,9 @@ const AddFoodForm = () => {
         dispatch(addFoodAction(postData));
         dispatch(backdropHide())
 
+
         setName('');
-        setType('');
+        setType('carbohydrate');
         setCalories('');
     }
 
@@ -64,6 +65,7 @@ const AddFoodForm = () => {
                 <TextInput
                     onChange={(e) => setName(e.target.value)}
                     value={name}
+                    desc={'Name'}
                 />
                 <ErrorMsg />
             </div>
@@ -78,6 +80,7 @@ const AddFoodForm = () => {
                 <TextInput
                     onChange={(e) => setCalories(e.target.value)}
                     value={calories}
+                    desc={'Calories'}
                 />
                 <ErrorMsg />
             </div>

@@ -13,7 +13,6 @@ export interface fetchAllActionInterface {
 }
 
 export const fetchAllFoodsAction = () => {
-
     return async (dispatch: Dispatch) => {
 
         const allFoods = await axios.get<FoodInterface[]>(url);
@@ -40,7 +39,6 @@ export interface EditFoodInterface {
 }
 
 export const addFoodAction = (data: PostData) => {
-
     return async (dispatch: Dispatch) => {
 
         const updatedFood = await axios.post<FoodInterface>(url, data);
@@ -57,6 +55,40 @@ export const addFoodAction = (data: PostData) => {
     }
 }
 
+export interface ClearEditedFoodInterface {
+    type: ActionTypes.CLEAR_UPDATED_FOOD,
+    payload: FoodInterface
+}
+
+export const clearEditFood = (payload: FoodInterface) => {
+    return async (dispatch: Dispatch) => {
+
+        dispatch({
+            type: ActionTypes.CLEAR_UPDATED_FOOD,
+            payload
+        })
+    };
+}
+
+
+export const deleteFood = (id: string) => {
+    return async (dispatch: Dispatch) => {
+
+        axios.delete(`${url}/${id}`)
+            .then(res => {
+
+                dispatch({
+                    type: ActionTypes.UPDATE_UI
+                });
+
+                dispatch({
+                    type: ActionTypes.UPDATE_FOOD,
+                    payload: res.data
+                })
+            })
+            .catch(e => console.log(e))
+    }
+}
 
 
 

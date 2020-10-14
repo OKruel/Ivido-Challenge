@@ -15,7 +15,7 @@ const DropDownInput = (props: PropType) => {
                 placeholder='Select'
                 {...props}
             >
-                <option className='drop-down__option' value='carbohydrate'>Carbohydrate</option>
+                <option className='drop-down__option' value='carbohydrate' selected>Carbohydrate</option>
                 <option className='drop-down__option' value='protein'>Protein</option>
                 <option className='drop-down__option' value='fat'>Fat</option>
             </select>

@@ -7,7 +7,8 @@ import Main from '../../components/Titles/Main/Main';
 import AddFoodBtn from '../../components/buttons/AddFoodBtn/AddFoodBtn';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import Breadcrum from '../../components/Breadcrum/Breadcrum';
-import { fetchAllFoodsAction } from '../../redux/actions/foodActions';
+import { fetchAllFoodsAction, clearEditFood } from '../../redux/actions/foodActions';
+import { FoodCategories } from '../../redux/reducers/foodReducer';
 import { backdropShow } from '../../redux/actions/layoutActions';
 import { RootState } from '../../redux/reducers/index';
 
@@ -64,7 +65,12 @@ const Dashboard = () => {
                     <Main />
                 </div>
                 <div className='dashboard__nav__button'>
-                    <AddFoodBtn onClick={() => dispatch(backdropShow())} />
+                    <AddFoodBtn onClick={() => {
+                        dispatch(backdropShow())
+                        dispatch(clearEditFood({
+                            id: '', name: '', type: FoodCategories.Carbohydrate, calories: 0
+                        }))
+                    }} />
                 </div>
             </nav>
             <main className='dashboard__main'>
