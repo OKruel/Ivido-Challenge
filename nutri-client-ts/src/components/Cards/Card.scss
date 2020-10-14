@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .card {
     background-color: #FFFFFF;
     height: 64px;
@@ -8,12 +10,12 @@
     display: grid;
     grid-template-columns: 1fr 40px;
     margin: 16px 0px;
+    font-family: $openSans;
 
 
     &__info {
         height: 100%;
         width: 100%;
-        // background-color: gray;
         grid-column: 1 / span 1;
 
         display: grid;
@@ -23,7 +25,6 @@
             grid-row: 1 / span 1;
             height: 100%;
             width: 100%;
-            // background-color: greenyellow;
 
             display: flex;
             justify-content: flex-start;
@@ -34,7 +35,6 @@
             grid-row: 2 / span 1;
             height: 100%;
             width: 100%;
-            // background-color: pink;
 
             display: flex;
             justify-content: flex-start;
@@ -44,7 +44,6 @@
 
     &__button {
         grid-column: 2 / span 1;
-        // background-color: blue;
         height: 100%;
         width: 100%;
 

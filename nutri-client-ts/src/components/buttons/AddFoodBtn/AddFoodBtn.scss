@@ -1,3 +1,5 @@
+@import '../../../sass/variables';
+
 .add-food {
     color: #ffffff;
     background-color: #5c13ff;
@@ -6,6 +8,8 @@
     font-size: 16px;
     border-radius: 4px;
     opacity: 1;
+
+    font-family: $openSans;
 
     border: 1px solid #5C13FF;
     box-shadow: 0px 4px 8px #00000029;
