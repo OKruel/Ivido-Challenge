@@ -6,26 +6,30 @@ enum FoodCategories {
     Fat = 'Fat',
 }
 
-export interface FoodReducerInterface {
+export interface FoodInterface {
+        id: string;
         name: string;
         type: FoodCategories;
         calories: number
 }
 
-// const initialState: FoodReducerInterface = {
-//         name: string;
-//         type: FoodCategories;
-//         calories: number
-// }
+export interface FoodReducerState {
+    foods: FoodInterface[];
 
-export const foodReducer = (state: FoodReducerInterface[] = [], action: Action) => {
+}
+
+const initialState: FoodReducerState = {
+    foods: []
+}
+
+export const foodReducer = (state: FoodReducerState = initialState , action: Action) => {
 
     switch (action.type) {
 
         case ActionTypes.FETCH_ALL_FOOD:
             return {
                 ...state,
-                ...action.payload 
+                foods: action.payload
             }
 
         default:

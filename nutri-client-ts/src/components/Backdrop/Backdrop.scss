@@ -11,4 +11,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    &__invisible {
+        opacity: 0;
+        display: none;
+        z-index: -100;
+    }
 }

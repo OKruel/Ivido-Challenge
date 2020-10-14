@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from "redux";
 import { ActionTypes } from './actionTypes';
-import { FoodReducerInterface } from '../reducers/foodReducer';
+import { FoodInterface } from '../reducers/foodReducer';
 
 const url: string = 'http://localhost:5000/nutrition';
 
@@ -9,14 +9,14 @@ const url: string = 'http://localhost:5000/nutrition';
 export interface fetchAllActionInterface {
 
     type: ActionTypes.FETCH_ALL_FOOD,
-    payload: FoodReducerInterface[]
+    payload: FoodInterface[]
 }
 
 export const fetchAllFoodsAction = () => {
     
     return async (dispatch: Dispatch) => {
 
-        const allFoods = await axios.get<FoodReducerInterface[]>(url);
+        const allFoods = await axios.get<FoodInterface[]>(url);
 
         console.log('thunk', allFoods.data);
 
@@ -26,3 +26,10 @@ export const fetchAllFoodsAction = () => {
         });
     };
 };
+
+export const addFoodAction = () => {
+    
+    return async (dispatch: Dispatch) => {
+
+    }
+}

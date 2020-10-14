@@ -1,7 +1,12 @@
 import React from 'react';
 import './TextInput.scss';
 
-const TextInput = () => {
+interface PropType {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
+}
+
+const TextInput = (props: PropType) => {
     return (
         <div className='input-text'>
             <label className='input-text__label'>Name</label>
@@ -9,6 +14,7 @@ const TextInput = () => {
                 type='text'
                 placeholder='Name of food'
                 className='input-text__input'
+                {...props}
             />
         </div>
     );

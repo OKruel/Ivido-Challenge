@@ -1,10 +1,18 @@
 import React from 'react';
 import './AddFoodBtn.scss';
 
+interface PropType {
+    onClick: (e: React.MouseEvent) => void
+}
 
-const AddFoodBtn = () => {
+const AddFoodBtn = (props: PropType) => {
     return (
-        <button className='add-food'>Add food</button>
+        <button
+            className='add-food'
+        	{...props}
+        >
+            Add food
+        </button>
     )
 }
 

@@ -7,15 +7,20 @@
     font-weight: bold;
     margin-right: 16px;
 
-
     border-radius: 4px;
     opacity: 1;
 
     border: 1px solid #5c13ff;
     box-shadow: 0px 4px 8px #00000029;
     transition: all 0.1s ease-in-out;
-    
+
     &:hover {
         transform: scale(1.03);
+    }
+    
+    &:active,
+    &:focus {
+        outline: none;
+        transform: scale(1);
     }
 }

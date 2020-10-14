@@ -1,59 +1,72 @@
 import './Dashboard.scss';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
 import Main from '../../components/Titles/Main/Main';
-import AddFood from '../../components/buttons/AddFoodBtn/AddFoodBtn';
-// import Backdrop from '../../components/Backdrop/Backdrop';
+import AddFoodBtn from '../../components/buttons/AddFoodBtn/AddFoodBtn';
+import Backdrop from '../../components/Backdrop/Backdrop';
 
 import { fetchAllFoodsAction } from '../../redux/actions/foodActions';
+import { backdropShow } from '../../redux/actions/layoutActions';
+
+import { RootState } from '../../redux/reducers/index';
 
 const Dashboard = () => {
 
     const dispatch = useDispatch();
+    const foods = useSelector((state: RootState) => state.foodReducer.foods);
 
     useEffect(() => {
-
-            dispatch(fetchAllFoodsAction());
-
+        dispatch(fetchAllFoodsAction());
     }, [dispatch])
+
+
+    const handleClick = () => { dispatch(backdropShow())}
+
+
+    const carbs = foods && foods.map(food => {
+        if (food.type.toUpperCase() === 'CARBOHYDRATE') {
+            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
+        }
+    })
+
+    const proteins = foods && foods.map(food => {
+        if (food.type.toUpperCase() === 'PROTEIN') {
+            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
+        }
+    })
+
+    const fats = foods && foods.map(food => {
+        if (food.type.toUpperCase() === 'FAT') {
+            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
+        }
+    })
 
 
     return (
         <div className='dashboard'>
-            {/* <Backdrop /> */}
+            <Backdrop />
             <nav className='dashboard__nav'>
                 <div className='dashboard__nav__title'>
                     <Main />
                 </div>
                 <div className='dashboard__nav__button'>
-                    <AddFood />
+                    <AddFoodBtn onClick={handleClick} />
                 </div>
             </nav>
             <main className='dashboard__main'>
                 <div className='dashboard__main__1'>
-                    <Categories />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <Categories>Carbohydrate</Categories>
+                    {carbs}
                 </div>
                 <div className='dashboard__main__2'>
-                    <Categories />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <Categories>Protein</Categories>
+                    {proteins}
                 </div>
                 <div className='dashboard__main__3'>
-                    <Categories />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <Categories>Fat</Categories>
+                    {fats}
                 </div>
             </main>
         </div>

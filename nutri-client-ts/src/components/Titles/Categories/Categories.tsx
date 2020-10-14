@@ -1,9 +1,13 @@
 import React from 'react';
 import './Categories.scss';
 
-const Categories = () => {
+interface PropsTypes {
+    children: string
+}
+
+const Categories = (props: PropsTypes) => {
     return (
-        <div className='categories'>Carbohydrate</div>
+        <div className='categories'>{props.children}</div>
     );
 };
 
