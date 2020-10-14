@@ -5,24 +5,30 @@ enum FoodCategories {
     Protein = 'Protein',
     Fat = 'Fat',
 }
-
 export interface FoodInterface {
-        id: string;
-        name: string;
-        type: FoodCategories;
-        calories: number
+    id: string;
+    name: string;
+    type: FoodCategories;
+    calories: number
 }
 
 export interface FoodReducerState {
     foods: FoodInterface[];
+    editFood: FoodInterface;
 
 }
 
 const initialState: FoodReducerState = {
-    foods: []
+    foods: [],
+    editFood: {
+        id: '',
+        name: '',
+        type: FoodCategories.Carbohydrate,
+        calories: 0
+    }
 }
 
-export const foodReducer = (state: FoodReducerState = initialState , action: Action) => {
+export const foodReducer = (state: FoodReducerState = initialState, action: Action) => {
 
     switch (action.type) {
 
@@ -30,6 +36,12 @@ export const foodReducer = (state: FoodReducerState = initialState , action: Act
             return {
                 ...state,
                 foods: action.payload
+            }
+
+        case ActionTypes.UPDATE_FOOD:
+            return {
+                ...state,
+                editFood: action.payload
             }
 
         default:

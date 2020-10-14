@@ -8,6 +8,10 @@ export interface BackdropHideInterface {
     type: ActionTypes.BACKDROP_HIDE,
 }
 
+export interface UpdateUIInterface {
+    type: ActionTypes.UPDATE_UI,
+}
+
 export const backdropShow = () => {
     return {
         type: ActionTypes.BACKDROP_SHOW
@@ -17,6 +21,12 @@ export const backdropShow = () => {
 export const backdropHide = () => {
     return {
         type: ActionTypes.BACKDROP_HIDE
+    }
+}
+
+export const updateUI = () => {
+    return {
+        type: ActionTypes.UPDATE_UI
     }
 }
 

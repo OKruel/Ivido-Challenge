@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { backdropHide } from '../../redux/actions/layoutActions';
+import { addFoodAction, PostData } from '../../redux/actions/foodActions';
+import { RootState } from '../../redux/reducers/index';
 import './AddFoodForm.scss';
 import AddFoodBtn from '../buttons/AddFoodBtn/AddFoodBtn';
 import CancelBtn from '../buttons/CancelBtn/CancelBtn';
 import TextInput from '../Inputs/Text/TextInput';
 import DropDownInput from '../Inputs/DropDown/DropDownInput';
-
-import axios from 'axios';
-
-interface PostData {
-    name: string;
-    type: string;
-    calories: number;
-}
+import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 const AddFoodForm = () => {
 
     const dispatch = useDispatch();
+    // const food = useSelector((state: RootState) => state.foodReducer.foods)
 
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [calories, setCalories] = useState('');
+
+    // useEffect(() => {
+    //     if (editMeal) {
+    //         setMealId(editMeal.id)
+    //         setType(editMeal.type);
+    //         setName(editMeal.name);
+    //         setCarbohydrate(editMeal.carbohydrate);
+    //         setProtein(editMeal.protein);
+    //         setSugar(editMeal.sugar);
+    //         setFat(editMeal.fat);
+    //     }
+    // }, [editMeal]);
 
     const onCancel = () => {
         setName('');
@@ -30,7 +38,7 @@ const AddFoodForm = () => {
         dispatch(backdropHide())
     }
 
-    const onAddFood = (e: React.MouseEvent) => {
+    const onAddFood = async (e: React.MouseEvent) => {
         e.preventDefault();
 
         const postData: PostData = {
@@ -39,13 +47,15 @@ const AddFoodForm = () => {
             calories: parseFloat(calories)
         }
 
-        axios.post('http://localhost:5000/nutrition', postData)
-            .then(res => {
-                onCancel();
-                console.log(res)
-            })
-            .catch(er => console.log(er))
+        dispatch(addFoodAction(postData));
+        dispatch(backdropHide())
+
+        setName('');
+        setType('');
+        setCalories('');
     }
+
+
 
     return (
         <div className='add-food-form'>
@@ -55,18 +65,21 @@ const AddFoodForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                 />
+                <ErrorMsg />
             </div>
             <div className='add-food-form__input2'>
                 <DropDownInput
                     onChange={(e) => setType(e.target.value)}
                     value={type}
                 />
+                <ErrorMsg />
             </div>
             <div className='add-food-form__input3'>
                 <TextInput
                     onChange={(e) => setCalories(e.target.value)}
                     value={calories}
                 />
+                <ErrorMsg />
             </div>
             <div className='add-food-form__buttons'>
                 <div>

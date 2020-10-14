@@ -6,53 +6,65 @@ import Categories from '../../components/Titles/Categories/Categories';
 import Main from '../../components/Titles/Main/Main';
 import AddFoodBtn from '../../components/buttons/AddFoodBtn/AddFoodBtn';
 import Backdrop from '../../components/Backdrop/Backdrop';
-
+import Breadcrum from '../../components/Breadcrum/Breadcrum';
 import { fetchAllFoodsAction } from '../../redux/actions/foodActions';
 import { backdropShow } from '../../redux/actions/layoutActions';
-
 import { RootState } from '../../redux/reducers/index';
 
 const Dashboard = () => {
 
     const dispatch = useDispatch();
     const foods = useSelector((state: RootState) => state.foodReducer.foods);
+    const updateUI = useSelector((state: RootState) => state.layoutReducer.updateUI);
 
     useEffect(() => {
         dispatch(fetchAllFoodsAction());
-    }, [dispatch])
-
-
-    const handleClick = () => { dispatch(backdropShow())}
-
+    }, [dispatch, updateUI])
 
     const carbs = foods && foods.map(food => {
         if (food.type.toUpperCase() === 'CARBOHYDRATE') {
-            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
-        }
-    })
+            return <Card
+                key={food.id}
+                id={food.id}
+                name={food.name}
+                calories={food.calories}
+            ></Card>
+        };
+    });
 
     const proteins = foods && foods.map(food => {
         if (food.type.toUpperCase() === 'PROTEIN') {
-            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
-        }
-    })
+            return <Card
+                key={food.id}
+                id={food.id}
+                name={food.name}
+                calories={food.calories}
+            ></Card>
+        };
+    });
 
     const fats = foods && foods.map(food => {
         if (food.type.toUpperCase() === 'FAT') {
-            return <Card key={food.id} name={food.name} calories={food.calories}></Card>
-        }
-    })
+            return <Card
+                key={food.id}
+                id={food.id}
+                name={food.name}
+                calories={food.calories}
+            ></Card>
+        };
+    });
 
 
     return (
         <div className='dashboard'>
+            <Breadcrum />
             <Backdrop />
             <nav className='dashboard__nav'>
                 <div className='dashboard__nav__title'>
                     <Main />
                 </div>
                 <div className='dashboard__nav__button'>
-                    <AddFoodBtn onClick={handleClick} />
+                    <AddFoodBtn onClick={() => dispatch(backdropShow())} />
                 </div>
             </nav>
             <main className='dashboard__main'>

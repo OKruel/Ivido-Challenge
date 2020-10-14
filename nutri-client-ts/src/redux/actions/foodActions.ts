@@ -13,23 +13,50 @@ export interface fetchAllActionInterface {
 }
 
 export const fetchAllFoodsAction = () => {
-    
+
     return async (dispatch: Dispatch) => {
 
         const allFoods = await axios.get<FoodInterface[]>(url);
 
         console.log('thunk', allFoods.data);
 
-        dispatch<fetchAllActionInterface>({
+        dispatch({
             type: ActionTypes.FETCH_ALL_FOOD,
             payload: allFoods.data
         });
     };
 };
 
-export const addFoodAction = () => {
-    
+export interface PostData {
+    name: string;
+    type: string;
+    calories: number;
+}
+
+export interface EditFoodInterface {
+
+    type: ActionTypes.UPDATE_FOOD,
+    payload: FoodInterface
+}
+
+export const addFoodAction = (data: PostData) => {
+
     return async (dispatch: Dispatch) => {
+
+        const updatedFood = await axios.post<FoodInterface>(url, data);
+
+        dispatch({
+            type: ActionTypes.UPDATE_UI
+        });
+
+        dispatch({
+            type: ActionTypes.UPDATE_FOOD,
+            payload: updatedFood.data
+        })
 
     }
 }
+
+
+
+

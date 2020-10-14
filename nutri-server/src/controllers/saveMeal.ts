@@ -17,6 +17,6 @@ const saveMealDB = async (req: Request, res: Response, next: NextFunction) => {
 
     await meal.save();
 
-    res.send(req.body)
+    res.send(meal)
 }
 export { saveMealDB };

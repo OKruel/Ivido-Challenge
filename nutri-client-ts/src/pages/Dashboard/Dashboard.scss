@@ -6,7 +6,6 @@
     grid-template-rows: 44px 56px 1fr;
     
     &__nav {
-        // background-color: white;
         grid-row: 1 / span 1;
 
         display: grid;
@@ -15,7 +14,6 @@
         &__title {
             height: 100%;
             width: 100%;
-            // background-color: salmon;
             grid-column: 1 / span 1;
 
             display: flex;
@@ -26,7 +24,6 @@
         &__button {
             height: 100%;
             width: 100%;
-            background-color: red;
             grid-column: 2 / span 1;
         }
     }

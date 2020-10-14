@@ -1,0 +1,35 @@
+.breadcrum {
+    height: 40px;
+    width: auto;
+    position: absolute;
+    top: 7px;
+    right: -500px;
+    border-radius: 8px 0px 0px 8px;
+    background-color: #04b31c;
+
+    display: grid;
+    grid-template-columns: 1fr 40px;
+
+    transition: all 0.5s ease-in-out;
+
+    &__title {
+        height: 40px;
+        padding: 8px 11px 11px 24px;
+        grid-column: 1 / span 1;
+        color: #ffffff;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__btn {
+        grid-column: 2 / span 1;
+        color: #ffffff;
+        background-color: #04b31c;
+    }
+
+    &__visible {
+        right: 0px;
+    }
+}
