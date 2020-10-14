@@ -10,10 +10,7 @@ const saveMealDB = async (req: Request, res: Response, next: NextFunction) => {
     const meal = req.body && Meals.build({
         type: req.body.type,
         name: req.body.name,
-        carbohydrate: req.body.carbohydrate,
-        protein: req.body.protein,
-        sugar: req.body.sugar,
-        fat: req.body.fat
+        calories: req.body.calories
     });
 
     await meal.save();

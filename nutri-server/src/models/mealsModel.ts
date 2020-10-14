@@ -1,28 +1,21 @@
 import mongoose, { mongo } from 'mongoose';
 
 enum mealType {
-    breakfast = 'breakfast',
-    lunch = 'lunch',
-    snack = 'snack',
-    dinner = 'dinner'
+    carbohydrates = 'carbohydrates',
+    protein = 'protein',
+    fat = 'fat'
 };
 
 interface MealAttr {
     name: string;
     type: mealType;
-    fat: number;
-    sugar: number;
-    carbohydrate: number;
-    protein: number;
+    calories: number;
 };
 
 interface MealDocument extends mongoose.Document {
     name: string;
     type: mealType;
-    fat: number;
-    sugar: number;
-    carbohydrate: number;
-    protein: number;
+    calories: number;
 }
 
 interface MealModel extends mongoose.Model<MealDocument> {
@@ -32,10 +25,7 @@ interface MealModel extends mongoose.Model<MealDocument> {
 const mealsSchema = new mongoose.Schema({
     name: { type: String, required: true },
     type: { type: mealType, required: true },
-    fat: { type: Number, required: false },
-    sugar: { type: Number, required: false },
-    carbohydrate: { type: Number, required: false },
-    protein: { type: Number, required: false },
+    calories: { type: Number, required: true },
 }, {
     toJSON: { //Transforming the mongoose JSON object to fit a DB commom pattern
         transform(doc, ret) {

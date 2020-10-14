@@ -1,4 +1,4 @@
-// import { FetchToDoActionInterface, DeleteToDoInterface } from './toDoActions';
+import { fetchAllActionInterface } from './foodActions';
 
 export enum ActionTypes {
     FETCH_ALL_FOOD = 'FETCH_ALL_FOOD',
@@ -6,4 +6,4 @@ export enum ActionTypes {
     UPDATE_FOOD = 'UPDATE_FOOD'
 };
 
-// export type Action = FetchToDoActionInterface | DeleteToDoInterface;
+export type Action = fetchAllActionInterface;

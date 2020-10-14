@@ -1,15 +1,28 @@
-import React from 'react';
 import './Dashboard.scss';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
 import Main from '../../components/Titles/Main/Main';
 import AddFood from '../../components/buttons/AddFoodBtn/AddFoodBtn';
-import Backdrop from '../../components/Backdrop/Backdrop';
+// import Backdrop from '../../components/Backdrop/Backdrop';
+
+import { fetchAllFoodsAction } from '../../redux/actions/foodActions';
 
 const Dashboard = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+            dispatch(fetchAllFoodsAction());
+
+    }, [dispatch])
+
+
     return (
         <div className='dashboard'>
-            <Backdrop/>
+            {/* <Backdrop /> */}
             <nav className='dashboard__nav'>
                 <div className='dashboard__nav__title'>
                     <Main />

@@ -1,9 +1,17 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import dotEnv from 'dotenv';
+
+dotEnv.config();
 
 const start = async () => {
 
-    const url = '';
+    const url = process.env.MONGODB_URI;
+    const port = process.env.PORT;
+
+    if (!url || !port) {
+        throw new Error('Environment variables not defined in .env file')
+    }
 
     mongoose.connect(url, {
         useNewUrlParser: true,
@@ -17,7 +25,8 @@ const start = async () => {
             console.log('MongoDB failed to connect', error)
         })
 
-    app.listen(5000, () => console.log('Nutri Api listening on port 5000'))
+    app.listen(port, () => console.log('Nutri Api listening on port 5000'))
+
 };
 
 start();

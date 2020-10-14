@@ -5,16 +5,20 @@ import { FoodReducerInterface } from '../reducers/foodReducer';
 
 const url: string = 'http://localhost:5000/nutrition';
 
-interface fetchAllActionInterface {
+
+export interface fetchAllActionInterface {
+
     type: ActionTypes.FETCH_ALL_FOOD,
     payload: FoodReducerInterface[]
 }
 
-export const fetchAllFoods = () => {
-
+export const fetchAllFoodsAction = () => {
+    
     return async (dispatch: Dispatch) => {
 
-        const allFoods = await axios.get<FoodReducerInterface[]>(url)
+        const allFoods = await axios.get<FoodReducerInterface[]>(url);
+
+        console.log('thunk', allFoods.data);
 
         dispatch<fetchAllActionInterface>({
             type: ActionTypes.FETCH_ALL_FOOD,
