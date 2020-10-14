@@ -4,9 +4,8 @@ import './TextInput.scss';
 const TextInput = () => {
     return (
         <div className='input-text'>
-            <label className='input-text__label' htmlFor='inputText'>Name</label>
+            <label className='input-text__label'>Name</label>
             <input
-                id='inputText'
                 type='text'
                 placeholder='Name of food'
                 className='input-text__input'

@@ -3,7 +3,7 @@ import './Dashboard.scss';
 import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
 import Main from '../../components/Titles/Main/Main';
-import AddFood from '../../components/buttons/AddFood/AddFood';
+import AddFood from '../../components/buttons/AddFoodBtn/AddFoodBtn';
 import Backdrop from '../../components/Backdrop/Backdrop';
 
 const Dashboard = () => {

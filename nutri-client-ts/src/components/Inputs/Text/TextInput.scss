@@ -1,6 +1,9 @@
+@import '../../../sass/variables';
+
 .input-text {
     height: 100%;
     width: 100%;
+    font-family: $openSans;
 
     display: flex;
     flex-direction: column;
@@ -14,12 +17,40 @@
     &__input {
         height: 44px;
         width: 100%;
-        background-color: #E8E8E8;
+        background-color: #e8e8e8;
         padding: 16px 11px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: $openSans;
+        color: #333333;
+        cursor: pointer;
+        border-style: none;
+        transition: all .1s ease-in-out;
         
         &::placeholder {
+            font-family: $openSans;
             font-size: 16px;
+            color: #333333;
+            opacity: 60%;
+        }
+        
+        &:hover {
+            background-color: #D8D8D8;
+            color: #333333;
+        }
+        
+        &:hover::placeholder {
+            opacity: 100%;
+        }
 
+        &:focus {
+            outline: none;
+            border: 1px solid #5C13FF;
+            box-shadow: 0px 4px 8px #00000029;
+            background-color: #FFFFFF;
+            opacity: 1;
         }
     }
+
+
 }

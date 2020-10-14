@@ -1,1 +1,46 @@
+@import '../../../sass/variables';
+
+.drop-down {
+    height: 100%;
+    width: 100%;
+    font-family: $openSans;
+    
+    display: flex;
+    flex-direction: column;
+    
+    &__label {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    &__select {
+        height: 44px;
+        width: 100%;
+        background-color: #e8e8e8;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: $openSans;
+        color: #333333;
+        cursor: pointer;
+        border-style: none;
+        transition: all .1s ease-in-out;
+
+        &:hover {
+            background-color: #D8D8D8;
+        }
+
+        &:focus {
+            outline: none;
+            border: 1px solid #5C13FF;
+            box-shadow: 0px 4px 8px #00000029;
+            background-color: #FFFFFF;
+            opacity: 1;
+        }
+    }
+
+    &__option {
+        height: 46px;
+    }
+}
 

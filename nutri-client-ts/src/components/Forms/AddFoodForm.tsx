@@ -1,7 +1,9 @@
 import React from 'react';
 import './AddFoodForm.scss';
-import AddFood from '../buttons/AddFood/AddFood';
+import AddFoodBtn from '../buttons/AddFoodBtn/AddFoodBtn';
+import CancelBtn from '../buttons/CancelBtn/CancelBtn';
 import TextInput from '../Inputs/Text/TextInput';
+import DropDownInput from '../Inputs/DropDown/DropDownInput';
 
 const AddFoodForm = () => {
     return (
@@ -11,17 +13,17 @@ const AddFoodForm = () => {
                 <TextInput />
             </div>
             <div className='add-food-form__input2'>
-                <TextInput />
+                <DropDownInput />
             </div>
             <div className='add-food-form__input3'>
                 <TextInput />
             </div>
             <div className='add-food-form__buttons'>
                 <div>
-                    <AddFood />
+                    <CancelBtn />
                 </div>
                 <div>
-                    <AddFood />
+                    <AddFoodBtn />
                 </div>
             </div>
         </div>

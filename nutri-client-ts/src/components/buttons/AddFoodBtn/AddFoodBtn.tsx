@@ -1,11 +1,11 @@
 import React from 'react';
-import './AddFood.scss';
+import './AddFoodBtn.scss';
 
 
-const AddFood = () => {
+const AddFoodBtn = () => {
     return (
         <button className='add-food'>Add food</button>
     )
 }
 
-export default AddFood;
+export default AddFoodBtn;

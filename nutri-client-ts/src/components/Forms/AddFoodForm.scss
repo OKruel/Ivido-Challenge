@@ -48,8 +48,10 @@
     &__buttons {
         grid-row: 7 / span 1;
         grid-column: 1 / span 3;
-        background-color: burlywood;
         height: 100%;
         width: 100%;
+
+        display: flex;
+        justify-content: flex-end;
     }
 }

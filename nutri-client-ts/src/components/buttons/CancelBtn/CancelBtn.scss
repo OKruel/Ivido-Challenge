@@ -1,0 +1,21 @@
+.cancel-btn {
+    color: #5c13ff;
+    background-color: #ffffff;
+    height: 44px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 16px;
+
+
+    border-radius: 4px;
+    opacity: 1;
+
+    border: 1px solid #5c13ff;
+    box-shadow: 0px 4px 8px #00000029;
+    transition: all 0.1s ease-in-out;
+    
+    &:hover {
+        transform: scale(1.03);
+    }
+}

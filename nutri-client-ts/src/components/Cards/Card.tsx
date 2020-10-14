@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import CloseButton from '../buttons/closeButton/closeButton';
+import CloseButton from '../buttons/CloseBtn/CloseBtn';
 
 const Card = () => {
     return (
