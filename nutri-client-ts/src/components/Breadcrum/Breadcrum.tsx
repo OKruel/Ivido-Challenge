@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearEditFood, clearDBFood } from '../../redux/actions/foodActions';
+import { clearDBFood } from '../../redux/actions/foodActions';
 import { FoodCategories } from '../../redux/reducers/foodReducer';
 import { RootState } from '../../redux/reducers/index';
 import './Breadcrum.scss';

@@ -1,5 +1,5 @@
 import './Dashboard.scss';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
