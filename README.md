@@ -1,9 +1,9 @@
-# Functional Nutrition Dashboard
+# Functional Nutrition Dashboard - NEW DESIGN
 
 ### Summary
 #### This is a simple dashboard to keep track of the nutritional values of your daily meals.
 #### You can add, edit, delete and list all meals with all their nutritional values.
-#### To tag your meals you have four categories to choose from. 
+#### To tag your meals you have three categories to choose from. 
 #### It was made with the MERN stack.
 
 ### Requirements
