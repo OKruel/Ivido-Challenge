@@ -4,5 +4,12 @@
     color: #E22F01;
     font-size: 12px;
     text-align: left;
-    opacity: 90%;
+    transition: all 0.2s ease-in-out;
+    // display: none;
+    opacity: 0%;
+    
+    &__visible {
+        // display: block;
+        opacity: 90%;
+    }
 }

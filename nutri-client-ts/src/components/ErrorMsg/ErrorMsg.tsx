@@ -1,10 +1,17 @@
 import React from 'react';
 import './ErrorMsg.scss';
 
+interface PropTypes {
+    msg: string;
+    visible: boolean
+}
 
-const ErrorMsg = () => {
+const ErrorMsg = (props: PropTypes) => {
+
     return (
-        <div className='error-msg'>Field should not be empty</div>
+        <div className={`error-msg ${props.visible ? 'error-msg__visible' : ''}`}>
+            {props.msg}
+        </div>
     );
 };
 

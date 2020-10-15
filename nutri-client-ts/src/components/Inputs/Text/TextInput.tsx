@@ -5,15 +5,17 @@ interface PropType {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     value: string;
     desc: string;
+    mytype: string;
+    myplaceholder: string
 }
 
-const TextInput = (props: PropType) => {
+const MyInput = (props: PropType) => {
     return (
         <div className='input-text'>
             <label className='input-text__label'>{props.desc}</label>
             <input
-                type='text'
-                placeholder='Name of food'
+                type={props.mytype}
+                placeholder={props.myplaceholder}
                 className='input-text__input'
                 {...props}
             />
@@ -21,4 +23,4 @@ const TextInput = (props: PropType) => {
     );
 };
 
-export default TextInput;
+export default MyInput;

@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { backdropHide } from '../../redux/actions/layoutActions';
-import { addFoodAction, PostData } from '../../redux/actions/foodActions';
+import { addFoodAction, PostData, clearEditFood } from '../../redux/actions/foodActions';
+import { FoodCategories } from '../../redux/reducers/foodReducer';
 import { RootState } from '../../redux/reducers/index';
 import './AddFoodForm.scss';
 import AddFoodBtn from '../buttons/AddFoodBtn/AddFoodBtn';
 import CancelBtn from '../buttons/CancelBtn/CancelBtn';
-import TextInput from '../Inputs/Text/TextInput';
+import MyInput from '../Inputs/Text/TextInput';
 import DropDownInput from '../Inputs/DropDown/DropDownInput';
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
 
 const AddFoodForm = () => {
 
     const dispatch = useDispatch();
-    // const food = useSelector((state: RootState) => state.foodReducer.foods)
+    const food = useSelector((state: RootState) => state.foodReducer.editFood)
 
     const [name, setName] = useState('');
     const [type, setType] = useState('carbohydrate');
     const [calories, setCalories] = useState('');
+    const [validForm, setValidForm] = useState(false);
+    const [sendForm, setSendForm] = useState(false);
 
     // useEffect(() => {
-    //     if (editMeal) {
-    //         setMealId(editMeal.id)
-    //         setType(editMeal.type);
-    //         setName(editMeal.name);
-    //         setCarbohydrate(editMeal.carbohydrate);
-    //         setProtein(editMeal.protein);
-    //         setSugar(editMeal.sugar);
-    //         setFat(editMeal.fat);
+    //     if (food.id.length > 0) {
+    //         setName(food.name);
+    //         setType(food.type);
+    //         setCalories(food.calories.toString());
     //     }
-    // }, [editMeal]);
+    // }, [food]);
 
     const onCancel = () => {
         setName('');
@@ -41,6 +40,15 @@ const AddFoodForm = () => {
     const onAddFood = async (e: React.MouseEvent) => {
         e.preventDefault();
 
+        setSendForm(true)
+
+        if (name.length === 0 || type.length === 0 || calories.length === 0) {
+            // setValidForm(false);
+            return;
+        } else {
+            // setValidForm(true); 
+        }
+
         const postData: PostData = {
             name,
             type,
@@ -48,41 +56,48 @@ const AddFoodForm = () => {
         }
 
         dispatch(addFoodAction(postData));
-        dispatch(backdropHide())
-
+        dispatch(backdropHide());
+        dispatch(clearEditFood({
+            id: '',
+            name: '',
+            calories: 0,
+            type: FoodCategories.Carbohydrate
+        }));
 
         setName('');
         setType('carbohydrate');
         setCalories('');
     }
 
-
-
     return (
         <div className='add-food-form'>
             <div className='add-food-form__title'>Add food</div>
             <div className='add-food-form__input1'>
-                <TextInput
+                <MyInput
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     desc={'Name'}
+                    mytype={'text'}
+                    myplaceholder={'Name of food'}
                 />
-                <ErrorMsg />
+                <ErrorMsg msg={'Field should not be empty'} visible={sendForm === true && name.length === 0} />
             </div>
             <div className='add-food-form__input2'>
                 <DropDownInput
                     onChange={(e) => setType(e.target.value)}
                     value={type}
                 />
-                <ErrorMsg />
+                <ErrorMsg msg={'Select a type'} visible={sendForm === true && type.length === 0} />
             </div>
             <div className='add-food-form__input3'>
-                <TextInput
+                <MyInput
                     onChange={(e) => setCalories(e.target.value)}
                     value={calories}
                     desc={'Calories'}
+                    mytype={'number'}
+                    myplaceholder={'000'}
                 />
-                <ErrorMsg />
+                <ErrorMsg msg={'Field should not be empty'} visible={sendForm === true && calories.length === 0} />
             </div>
             <div className='add-food-form__buttons'>
                 <div>
