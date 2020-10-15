@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearEditFood } from '../../redux/actions/foodActions';
+import { clearEditFood, clearDBFood } from '../../redux/actions/foodActions';
 import { FoodCategories } from '../../redux/reducers/foodReducer';
 import { RootState } from '../../redux/reducers/index';
 import './Breadcrum.scss';
@@ -15,20 +15,20 @@ interface PropTypes {
 const Breadcrum = (props: PropTypes) => {
     const dispatch = useDispatch();
 
-    const editedProduct = useSelector((state: RootState) => state.foodReducer.editFood);
+    const dbFood = useSelector((state: RootState) => state.foodReducer.dbFood);
 
     const clearBreadcrum = () => {
-        dispatch(clearEditFood({
+        dispatch(clearDBFood({
             id: '', name: '', type: FoodCategories.Carbohydrate, calories: 0
         }))
     }
 
     return (
         <div
-            className={`breadcrum ${editedProduct.name ? 'breadcrum__visible' : ''}`}
+            className={`breadcrum ${dbFood.name ? 'breadcrum__visible' : ''}`}
             style={{backgroundColor: props.backcolor, color: props.textcolor}}
         >
-            <div className='breadcrum__title'>You've {props.methodText} {editedProduct.name}</div>
+            <div className='breadcrum__title'>You've {props.methodText} {dbFood.name}</div>
             <div className='breadcrum__btn'>
                 <CloseBtn onClick={clearBreadcrum} backcolor={props.backcolor} iconcolor={props.textcolor} />
             </div>

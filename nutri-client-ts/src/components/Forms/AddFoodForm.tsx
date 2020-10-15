@@ -14,22 +14,25 @@ import ErrorMsg from '../ErrorMsg/ErrorMsg';
 const AddFoodForm = () => {
 
     const dispatch = useDispatch();
-    const food = useSelector((state: RootState) => state.foodReducer.editFood)
+    const food = useSelector((state: RootState) => state.foodReducer.editFood);
 
+    const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [calories, setCalories] = useState('');
     const [sendForm, setSendForm] = useState(false);
 
-    // useEffect(() => {
-    //     if (food.id.length > 0) {
-    //         setName(food.name);
-    //         setType(food.type);
-    //         setCalories(food.calories.toString());
-    //     }
-    // }, [food]);
+    useEffect(() => {
+        if (food.id.length > 0) {
+            setId(food.id);
+            setName(food.name);
+            setType(food.type);
+            setCalories(food.calories.toString());
+        }
+    }, [food]);
 
     const onCancel = () => {
+        setId('');
         setName('');
         setType('');
         setCalories('');
@@ -49,6 +52,7 @@ const AddFoodForm = () => {
         setSendForm(false);
 
         const postData: PostData = {
+            id,
             name,
             type,
             calories: parseFloat(calories)
@@ -62,7 +66,8 @@ const AddFoodForm = () => {
             calories: 0,
             type: FoodCategories.Carbohydrate
         }));
-
+        
+        setId('');
         setName('');
         setType('');
         setCalories('');

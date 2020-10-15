@@ -21,13 +21,20 @@ export interface FoodInterface {
 export interface FoodReducerState {
     foods: FoodInterface[];
     editFood: FoodInterface;
-    foodMethod: FoodMethods
+    dbFood: FoodInterface;
+    foodMethod: FoodMethods;
 
 }
 
 const initialState: FoodReducerState = {
     foods: [],
     editFood: {
+        id: '',
+        name: '',
+        type: FoodCategories.Carbohydrate,
+        calories: 0
+    },
+    dbFood: {
         id: '',
         name: '',
         type: FoodCategories.Carbohydrate,
@@ -49,20 +56,32 @@ export const foodReducer = (state: FoodReducerState = initialState, action: Acti
         case ActionTypes.UPDATE_FOOD:
             return {
                 ...state,
-                editFood: action.payload
+                dbFood: action.payload
             }
 
         case ActionTypes.CLEAR_UPDATED_FOOD:
             return {
                 ...state,
                 editFood: action.payload
-        }
+            }
+
+            case ActionTypes.CLEAR_DB_FOOD:
+            return {
+                ...state,
+                dbFood: action.payload
+            }
 
         case ActionTypes.FOOD_METHOD:
             return {
                 ...state,
                 foodMethod: action.payload
-        }
+            }
+
+        case ActionTypes.EDIT_FOOD:
+            return {
+                ...state,
+                editFood: action.payload
+            }
 
         default:
             return state;;

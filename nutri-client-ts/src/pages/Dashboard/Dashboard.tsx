@@ -7,7 +7,7 @@ import Main from '../../components/Titles/Main/Main';
 import AddFoodBtn from '../../components/buttons/AddFoodBtn/AddFoodBtn';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import Breadcrum from '../../components/Breadcrum/Breadcrum';
-import { fetchAllFoodsAction, clearEditFood } from '../../redux/actions/foodActions';
+import { fetchAllFoodsAction, clearEditFood, clearDBFood } from '../../redux/actions/foodActions';
 import { FoodCategories } from '../../redux/reducers/foodReducer';
 import { backdropShow } from '../../redux/actions/layoutActions';
 import { RootState } from '../../redux/reducers/index';
@@ -31,6 +31,7 @@ const Dashboard = () => {
                 id={food.id}
                 name={food.name}
                 calories={food.calories}
+                type={food.type}
             ></Card>
         };
     });
@@ -42,6 +43,7 @@ const Dashboard = () => {
                 id={food.id}
                 name={food.name}
                 calories={food.calories}
+                type={food.type}
             ></Card>
         };
     });
@@ -53,6 +55,7 @@ const Dashboard = () => {
                 id={food.id}
                 name={food.name}
                 calories={food.calories}
+                type={food.type}
             ></Card>
         };
     });
@@ -70,6 +73,9 @@ const Dashboard = () => {
                     <AddFoodBtn onClick={() => {
                         dispatch(backdropShow())
                         dispatch(clearEditFood({
+                            id: '', name: '', type: FoodCategories.Carbohydrate, calories: 0
+                        }))
+                        dispatch(clearDBFood({
                             id: '', name: '', type: FoodCategories.Carbohydrate, calories: 0
                         }))
                     }} />

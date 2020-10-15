@@ -30,6 +30,7 @@ export const fetchAllFoodsAction = () => {
 };
 
 export interface PostData {
+    id?: string;
     name: string;
     type: string;
     calories: number;
@@ -44,22 +45,40 @@ export interface EditFoodInterface {
 export const addFoodAction = (data: PostData) => {
     return async (dispatch: Dispatch) => {
 
-        const updatedFood = await axios.post<FoodInterface>(url, data);
+        console.log('Add food action', data)
+
+        let updatedFood;
+
+        if (data.id) {
+            updatedFood = await axios.put<FoodInterface>(`${url}/${data.id}`, data);
+
+            dispatch({
+                type: ActionTypes.FOOD_METHOD,
+                payload: FoodMethods.Edited
+            })
+
+            dispatch({
+                type: ActionTypes.UPDATE_FOOD,
+                payload: updatedFood.data
+            })
+
+        } else {
+            updatedFood = await axios.post<FoodInterface>(url, data);
+
+            dispatch({
+                type: ActionTypes.FOOD_METHOD,
+                payload: FoodMethods.Added
+            })
+
+            dispatch({
+                type: ActionTypes.UPDATE_FOOD,
+                payload: updatedFood.data
+            })
+        }
 
         dispatch({
             type: ActionTypes.UPDATE_UI
         });
-
-        dispatch({
-            type: ActionTypes.UPDATE_FOOD,
-            payload: updatedFood.data
-        })
-
-        dispatch({
-            type: ActionTypes.FOOD_METHOD,
-            payload: FoodMethods.Added
-        })
-
     }
 }
 
@@ -75,8 +94,28 @@ export const clearEditFood = (payload: FoodInterface) => {
             type: ActionTypes.CLEAR_UPDATED_FOOD,
             payload
         })
+
+        dispatch({
+            type: ActionTypes.FOOD_METHOD,
+            payload: FoodMethods.Edited
+        })
     };
 }
+
+export interface ClearDBFood {
+    type: ActionTypes.CLEAR_DB_FOOD,
+    payload: FoodInterface
+}
+
+export const clearDBFood = (payload: FoodInterface) => {
+    return async (dispatch: Dispatch) => {
+
+        dispatch({
+            type: ActionTypes.CLEAR_DB_FOOD,
+            payload
+        });
+    };
+};
 
 
 export const deleteFood = (id: string) => {
@@ -101,7 +140,22 @@ export const deleteFood = (id: string) => {
             })
             .catch(e => console.log(e))
     }
+};
+
+
+export interface EditFood {
+    type: ActionTypes.EDIT_FOOD,
+    payload: FoodInterface
 }
 
 
 
+export const editFood = (payload: FoodInterface) => {
+    return async (dispatch: Dispatch) => {
+
+        dispatch({
+            type: ActionTypes.EDIT_FOOD,
+            payload
+        })
+    }
+}
