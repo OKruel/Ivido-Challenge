@@ -37,6 +37,10 @@
             background-color: #FFFFFF;
             opacity: 1;
         }
+
+        &__error {
+            border: 1px solid #E22F01;
+        }
     }
 
     &__option {

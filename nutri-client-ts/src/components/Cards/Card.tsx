@@ -21,7 +21,7 @@ const Card = (props: PropTypes) => {
                 <div className='card__info__amount'>{props.calories} calories</div>
             </div>
             <div className='card__button'>
-                <CloseBtn onClick={() => dispatch(deleteFood(props.id))} />
+                <CloseBtn onClick={() => dispatch(deleteFood(props.id))} backcolor={'#FFFFFF'} iconcolor={'gray'}/>
             </div>
         </div>
     );

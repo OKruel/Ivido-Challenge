@@ -1,5 +1,5 @@
 import './Dashboard.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/Cards/Card';
 import Categories from '../../components/Titles/Categories/Categories';
@@ -16,11 +16,13 @@ const Dashboard = () => {
 
     const dispatch = useDispatch();
     const foods = useSelector((state: RootState) => state.foodReducer.foods);
+    const foodMethod = useSelector((state: RootState) => state.foodReducer.foodMethod);
     const updateUI = useSelector((state: RootState) => state.layoutReducer.updateUI);
 
     useEffect(() => {
         dispatch(fetchAllFoodsAction());
     }, [dispatch, updateUI])
+
 
     const carbs = foods && foods.map(food => {
         if (food.type.toUpperCase() === 'CARBOHYDRATE') {
@@ -58,7 +60,7 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard'>
-            <Breadcrum />
+            <Breadcrum backcolor={foodMethod === 'Added' ? '#04b31c' : 'gray'} textcolor={'#FFFFFF'} methodText={foodMethod.toLowerCase()} />
             <Backdrop />
             <nav className='dashboard__nav'>
                 <div className='dashboard__nav__title'>

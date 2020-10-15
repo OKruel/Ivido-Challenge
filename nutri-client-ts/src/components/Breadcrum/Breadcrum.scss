@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .breadcrum {
     height: 40px;
     width: auto;
@@ -7,14 +9,17 @@
     border-radius: 8px 0px 0px 8px;
     background-color: #04b31c;
 
+    font-family: $openSans;
+    
     display: grid;
     grid-template-columns: 1fr 40px;
-
+    
     transition: all 0.5s ease-in-out;
-
+    
     &__title {
+        font-family: $openSans;
         height: 40px;
-        padding: 8px 11px 11px 24px;
+        padding: 0px 24px 0px 11px;
         grid-column: 1 / span 1;
         color: #ffffff;
         font-size: 16px;

@@ -1,10 +1,15 @@
 import axios from 'axios';
 import { Dispatch } from "redux";
 import { ActionTypes } from './actionTypes';
-import { FoodInterface } from '../reducers/foodReducer';
+import { FoodInterface, FoodMethods } from '../reducers/foodReducer';
 
 const url: string = 'http://localhost:5000/nutrition';
 
+
+export interface FoodMethod {
+    type: ActionTypes.FOOD_METHOD;
+    payload: FoodMethods
+}
 
 export interface fetchAllActionInterface {
 
@@ -16,8 +21,6 @@ export const fetchAllFoodsAction = () => {
     return async (dispatch: Dispatch) => {
 
         const allFoods = await axios.get<FoodInterface[]>(url);
-
-        console.log('thunk', allFoods.data);
 
         dispatch({
             type: ActionTypes.FETCH_ALL_FOOD,
@@ -52,6 +55,11 @@ export const addFoodAction = (data: PostData) => {
             payload: updatedFood.data
         })
 
+        dispatch({
+            type: ActionTypes.FOOD_METHOD,
+            payload: FoodMethods.Added
+        })
+
     }
 }
 
@@ -84,6 +92,11 @@ export const deleteFood = (id: string) => {
                 dispatch({
                     type: ActionTypes.UPDATE_FOOD,
                     payload: res.data
+                })
+
+                dispatch({
+                    type: ActionTypes.FOOD_METHOD,
+                    payload: FoodMethods.Deleted
                 })
             })
             .catch(e => console.log(e))

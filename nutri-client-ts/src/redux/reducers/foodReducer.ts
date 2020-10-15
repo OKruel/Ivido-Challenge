@@ -5,6 +5,12 @@ export enum FoodCategories {
     Protein = 'Protein',
     Fat = 'Fat',
 }
+
+export enum FoodMethods {
+    Added = 'Added',
+    Deleted = 'Deleted',
+    Edited = 'Edited',
+}
 export interface FoodInterface {
     id: string;
     name: string;
@@ -15,6 +21,7 @@ export interface FoodInterface {
 export interface FoodReducerState {
     foods: FoodInterface[];
     editFood: FoodInterface;
+    foodMethod: FoodMethods
 
 }
 
@@ -25,7 +32,8 @@ const initialState: FoodReducerState = {
         name: '',
         type: FoodCategories.Carbohydrate,
         calories: 0
-    }
+    },
+    foodMethod: FoodMethods.Edited
 }
 
 export const foodReducer = (state: FoodReducerState = initialState, action: Action) => {
@@ -48,6 +56,12 @@ export const foodReducer = (state: FoodReducerState = initialState, action: Acti
             return {
                 ...state,
                 editFood: action.payload
+        }
+
+        case ActionTypes.FOOD_METHOD:
+            return {
+                ...state,
+                foodMethod: action.payload
         }
 
         default:

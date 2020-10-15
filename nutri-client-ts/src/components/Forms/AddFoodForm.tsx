@@ -86,6 +86,7 @@ const AddFoodForm = () => {
                 <DropDownInput
                     onChange={(e) => setType(e.target.value)}
                     value={type}
+                    valid={sendForm === true && type.length === 0}
                 />
                 <ErrorMsg msg={'Select a type'} visible={sendForm === true && type.length === 0} />
             </div>
