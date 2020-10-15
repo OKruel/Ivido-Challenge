@@ -17,9 +17,8 @@ const AddFoodForm = () => {
     const food = useSelector((state: RootState) => state.foodReducer.editFood)
 
     const [name, setName] = useState('');
-    const [type, setType] = useState('carbohydrate');
+    const [type, setType] = useState('');
     const [calories, setCalories] = useState('');
-    const [validForm, setValidForm] = useState(false);
     const [sendForm, setSendForm] = useState(false);
 
     // useEffect(() => {
@@ -32,22 +31,22 @@ const AddFoodForm = () => {
 
     const onCancel = () => {
         setName('');
-        setType('carbohydrate');
+        setType('');
         setCalories('');
-        dispatch(backdropHide())
+        setSendForm(false);
+        dispatch(backdropHide());
     }
 
     const onAddFood = async (e: React.MouseEvent) => {
         e.preventDefault();
 
-        setSendForm(true)
 
         if (name.length === 0 || type.length === 0 || calories.length === 0) {
-            // setValidForm(false);
+            setSendForm(true);
             return;
-        } else {
-            // setValidForm(true); 
         }
+
+        setSendForm(false);
 
         const postData: PostData = {
             name,
@@ -65,7 +64,7 @@ const AddFoodForm = () => {
         }));
 
         setName('');
-        setType('carbohydrate');
+        setType('');
         setCalories('');
     }
 
@@ -79,6 +78,7 @@ const AddFoodForm = () => {
                     desc={'Name'}
                     mytype={'text'}
                     myplaceholder={'Name of food'}
+                    valid={sendForm === true && name.length === 0}
                 />
                 <ErrorMsg msg={'Field should not be empty'} visible={sendForm === true && name.length === 0} />
             </div>
@@ -96,6 +96,7 @@ const AddFoodForm = () => {
                     desc={'Calories'}
                     mytype={'number'}
                     myplaceholder={'000'}
+                    valid={sendForm === true && name.length === 0}
                 />
                 <ErrorMsg msg={'Field should not be empty'} visible={sendForm === true && calories.length === 0} />
             </div>

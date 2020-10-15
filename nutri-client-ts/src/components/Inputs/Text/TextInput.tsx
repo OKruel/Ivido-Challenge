@@ -7,6 +7,7 @@ interface PropType {
     desc: string;
     mytype: string;
     myplaceholder: string
+    valid: boolean
 }
 
 const MyInput = (props: PropType) => {
@@ -16,7 +17,7 @@ const MyInput = (props: PropType) => {
             <input
                 type={props.mytype}
                 placeholder={props.myplaceholder}
-                className='input-text__input'
+                className={`input-text__input ${props.valid ? 'input-text__input__error' : '' }`}
                 {...props}
             />
         </div>

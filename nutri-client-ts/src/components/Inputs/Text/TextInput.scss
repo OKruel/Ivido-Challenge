@@ -1,4 +1,4 @@
-@import '../../../sass/variables';
+@import "../../../sass/variables";
 
 .input-text {
     height: 100%;
@@ -25,32 +25,34 @@
         color: #333333;
         cursor: pointer;
         border-style: none;
-        transition: all .1s ease-in-out;
-        
+        transition: all 0.1s ease-in-out;
+
         &::placeholder {
             font-family: $openSans;
             font-size: 16px;
             color: #333333;
             opacity: 60%;
         }
-        
+
         &:hover {
-            background-color: #D8D8D8;
+            background-color: #d8d8d8;
             color: #333333;
         }
-        
+
         &:hover::placeholder {
             opacity: 100%;
         }
 
         &:focus {
             outline: none;
-            border: 1px solid #5C13FF;
+            border: 1px solid #5c13ff;
             box-shadow: 0px 4px 8px #00000029;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             opacity: 1;
         }
+
+        &__error {
+            border: 1px solid #E22F01;
+        }
     }
-
-
 }
