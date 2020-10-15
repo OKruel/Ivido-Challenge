@@ -1,0 +1,30 @@
+.edit-btn {
+    &__icon {
+        height: 16px;
+        width: 16px;
+        // background-color: black;
+        border: 2px solid gray;
+        border-radius: 20%;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 10px;
+            left: 10%;
+            top: 30%;
+            background-color: gray;
+        }
+        
+        &::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 8px;
+            left: 10%;
+            top: 60%;
+            background-color: gray;
+        }
+    }
+}

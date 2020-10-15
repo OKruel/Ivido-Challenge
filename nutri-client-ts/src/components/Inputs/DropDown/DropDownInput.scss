@@ -1,19 +1,19 @@
-@import '../../../sass/variables';
+@import "../../../sass/variables";
 
 .drop-down {
     height: 100%;
     width: 100%;
     font-family: $openSans;
-    
+
     display: flex;
     flex-direction: column;
-    
+
     &__label {
         display: flex;
         justify-content: flex-start;
         align-items: center;
     }
-    
+
     &__select {
         height: 44px;
         width: 100%;
@@ -24,27 +24,24 @@
         color: #333333;
         cursor: pointer;
         border-style: none;
-        transition: all .1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        position: relative;
+        padding: 11px 16px 11px 16px;
 
         &:hover {
-            background-color: #D8D8D8;
+            background-color: #d8d8d8;
         }
 
         &:focus {
             outline: none;
-            border: 1px solid #5C13FF;
+            border: 1px solid #5c13ff;
             box-shadow: 0px 4px 8px #00000029;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             opacity: 1;
         }
 
         &__error {
-            border: 1px solid #E22F01;
+            border: 1px solid #e22f01;
         }
     }
-
-    &__option {
-        height: 46px;
-    }
 }
-
